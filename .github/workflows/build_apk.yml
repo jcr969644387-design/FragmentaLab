@@ -42,10 +42,13 @@ jobs:
       - name: Verify single APK
         run: |
           test -f build/app/outputs/flutter-apk/app-release.apk
-          total=$(find build/app/outputs -name "*.apk" | wc -l)
+          # Flutter copia el mismo APK a apk/release/ y a flutter-apk/; se
+          # cuenta solo la salida de Flutter, que es la que se publica. Si
+          # apareciera mas de un APK (por ejemplo, uno por ABI) el paso falla.
+          total=$(find build/app/outputs/flutter-apk -name "*.apk" | wc -l)
           if [ "$total" -ne 1 ]; then
             echo "Se esperaba exactamente 1 APK y se encontraron $total:"
-            find build/app/outputs -name "*.apk"
+            find build/app/outputs/flutter-apk -name "*.apk"
             exit 1
           fi
           ls -lh build/app/outputs/flutter-apk/app-release.apk
