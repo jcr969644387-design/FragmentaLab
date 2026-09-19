@@ -4,13 +4,14 @@ import '../calculators/delay_sequencer.dart';
 import '../models/blast_design.dart';
 import '../models/delay_sequence.dart';
 import '../services/design_store.dart';
+import '../utils/ui_feedback.dart';
 import '../widgets/app_card.dart';
 import '../widgets/mesh_painter.dart';
 import '../widgets/risk_indicator.dart';
 import '../widgets/safety_banner.dart';
 import 'screen_scaffold.dart';
 
-/// Modulo 6: secuencia de retardos.
+/// Modulo 5: secuencia de retardos.
 ///
 /// Representa exclusivamente el **orden relativo** de salida y su efecto
 /// cualitativo sobre desplazamiento, fragmentacion y vibracion. No entrega
@@ -48,7 +49,10 @@ class DelaySequenceScreen extends StatelessWidget {
                 (DelayPattern p) => _OpcionSecuencia(
                   patron: p,
                   seleccionado: p == d.secuencia,
-                  onTap: () => store.cambiarSecuencia(p),
+                  onTap: () {
+                    UiFeedback.seleccion();
+                    store.cambiarSecuencia(p);
+                  },
                 ),
               ),
             ],

@@ -8,7 +8,7 @@ import '../models/delay_sequence.dart';
 /// Todos los modulos leen y escriben el mismo `BlastDesign`, de modo que un
 /// cambio hecho en el modulo de malla se refleja inmediatamente en simulacion,
 /// retardos y tutor. Es la pieza que convierte a Fragmenta Lab en un ejercicio
-/// unico en vez de nueve calculadoras aisladas.
+/// unico en vez de ocho calculadoras aisladas.
 class DesignStore extends ChangeNotifier {
   BlastDesign _design = BlastDesign.ejemploEducativo();
 

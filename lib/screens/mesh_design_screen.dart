@@ -14,6 +14,7 @@ import '../services/design_store.dart';
 import '../theme/app_theme.dart';
 import '../utils/app_strings.dart';
 import '../utils/formatters.dart';
+import '../utils/ui_feedback.dart';
 import '../utils/validators.dart';
 import '../widgets/app_card.dart';
 import '../widgets/numeric_field.dart';
@@ -21,7 +22,7 @@ import '../widgets/risk_indicator.dart';
 import '../widgets/safety_banner.dart';
 import 'screen_scaffold.dart';
 
-/// Modulo 2: diseno de malla.
+/// Modulo 1: diseno de malla.
 ///
 /// Entrada de los diez parametros geometricos del ejercicio y calculo
 /// inmediato de las relaciones derivadas, con validacion y clasificacion de
@@ -112,6 +113,7 @@ class _MeshDesignScreenState extends State<MeshDesignScreen> {
   }
 
   void _sugerirGeometria() {
+    UiFeedback.confirmacion();
     final EducationConfig config = ConfigService.instance.config;
     final BurdenCalculator calc = BurdenCalculator(config);
     final double diametro = Fmt.parseDouble(_diametro.text) ??

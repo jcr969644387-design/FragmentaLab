@@ -63,15 +63,15 @@ Estudiantes de Ingenieria de Minas de los cursos de **Perforacion y Voladura**,
 
 | # | Modulo | Que hace |
 |---|--------|----------|
-| 1 | Inicio | Identidad, descripcion, advertencia y acceso a los modulos |
-| 2 | Diseno de malla | 10 entradas, relaciones geometricas, riesgo y validaciones |
-| 3 | Burden y espaciamiento | Modelo configurable `B = k_B x D`, `S = k_S x B` con formula, variables, unidades e interpretacion |
-| 4 | Parametros tecnicos | 13 parametros con definicion, unidad, rango academico e influencia |
-| 5 | Explosivos (conceptual) | Categorias abstractas y efectos cualitativos |
-| 6 | Secuencia de retardos | Orden conceptual, intervalos relativos, direccion e influencia |
-| 7 | Simulacion conceptual | Vista en planta de la malla e indicadores por reglas |
-| 8 | Evaluacion | 15 preguntas con puntaje, respuesta correcta, explicacion y errores |
-| 9 | Tutor local | Base de reglas sin conexion, con interfaz lista para IA futura |
+| — | Inicio | Identidad, descripcion, advertencia y acceso a los modulos |
+| 1 | Diseno de malla | 10 entradas, relaciones geometricas, riesgo y validaciones |
+| 2 | Burden y espaciamiento | Modelo configurable `B = k_B x D`, `S = k_S x B` con formula, variables, unidades e interpretacion |
+| 3 | Parametros tecnicos | 13 parametros con definicion, unidad, rango academico e influencia |
+| 4 | Explosivos (conceptual) | Categorias abstractas y efectos cualitativos |
+| 5 | Secuencia de retardos | Orden conceptual, intervalos relativos, direccion e influencia |
+| 6 | Simulacion conceptual | Tipo de malla (subterranea, superficial o ambas), vista en planta e indicadores por reglas |
+| 7 | Evaluacion | 15 preguntas con puntaje, respuesta correcta, explicacion y errores |
+| 8 | Tutor local | Base de reglas sin conexion, con interfaz lista para IA futura |
 
 Todos los modulos comparten **un solo ejercicio activo**: lo que se cambia en la
 malla se refleja en la simulacion, el tutor y los indicadores.
@@ -175,14 +175,14 @@ FragmentaLab/
 ├── lib/
 │   ├── main.dart          arranque y carga de configuracion
 │   ├── app.dart           MaterialApp, tema y estado compartido
-│   ├── models/            datos inmutables (13 archivos)
-│   ├── calculators/       logica pura de calculo y reglas (5 archivos)
+│   ├── models/            datos inmutables (14 archivos)
+│   ├── calculators/       logica pura de calculo y reglas (6 archivos)
 │   ├── services/          configuracion, estado, banco de preguntas, tutor
-│   ├── screens/           los 9 modulos + shell de navegacion
+│   ├── screens/           inicio, los 8 modulos y el shell de navegacion
 │   ├── widgets/           componentes reutilizables
 │   ├── theme/             colores y tema Material 3
 │   └── utils/             textos, formato y validaciones
-├── test/                  10 archivos de prueba (unitarias + widget)
+├── test/                  11 archivos de prueba (unitarias + widget)
 ├── pubspec.yaml
 ├── analysis_options.yaml
 ├── CHANGELOG.md

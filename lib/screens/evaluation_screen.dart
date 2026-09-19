@@ -4,12 +4,13 @@ import '../models/quiz.dart';
 import '../services/quiz_service.dart';
 import '../theme/app_theme.dart';
 import '../utils/formatters.dart';
+import '../utils/ui_feedback.dart';
 import '../widgets/app_card.dart';
 import '../widgets/risk_indicator.dart';
 import '../widgets/safety_banner.dart';
 import 'screen_scaffold.dart';
 
-/// Modulo 8: evaluacion.
+/// Modulo 7: evaluacion.
 ///
 /// Quince preguntas de seleccion multiple con puntaje, respuesta correcta,
 /// explicacion tecnica y resumen de errores por tema.
@@ -37,20 +38,30 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
     if (_verificada) {
       return;
     }
+    UiFeedback.seleccion();
     setState(() => _seleccion[_actual.id] = opcion);
   }
 
   void _verificar() {
     if (!_seleccion.containsKey(_actual.id)) {
+      UiFeedback.error();
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Selecciona una alternativa.')),
       );
       return;
     }
+    // El acierto y el error se distinguen tambien por el patron tactil, no
+    // solo por el color de la tarjeta de respuesta.
+    if (_seleccion[_actual.id] == _actual.indiceCorrecto) {
+      UiFeedback.confirmacion();
+    } else {
+      UiFeedback.error();
+    }
     setState(() => _verificada = true);
   }
 
   void _siguiente() {
+    UiFeedback.toque();
     if (_indice + 1 >= _preguntas.length) {
       setState(() => _finalizada = true);
       return;
@@ -62,6 +73,7 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
   }
 
   void _reiniciar() {
+    UiFeedback.toque();
     setState(() {
       _seleccion.clear();
       _indice = 0;

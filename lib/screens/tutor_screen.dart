@@ -9,11 +9,12 @@ import '../services/config_service.dart';
 import '../services/design_store.dart';
 import '../services/tutor_service.dart';
 import '../theme/app_theme.dart';
+import '../utils/ui_feedback.dart';
 import '../widgets/app_card.dart';
 import '../widgets/safety_banner.dart';
 import 'screen_scaffold.dart';
 
-/// Modulo 9: tutor local.
+/// Modulo 8: tutor local.
 ///
 /// Funciona con una base de reglas cerrada, sin conexion, sin API externa y
 /// sin claves. La interfaz `TutorEngine` deja preparada la sustitucion por un
@@ -190,6 +191,7 @@ class _TutorScreenState extends State<TutorScreen> {
                 child: Theme(
                   data: tema.copyWith(dividerColor: Colors.transparent),
                   child: ExpansionTile(
+                    onExpansionChanged: (_) => UiFeedback.seleccion(),
                     tilePadding: const EdgeInsets.symmetric(horizontal: 14),
                     childrenPadding: const EdgeInsets.fromLTRB(14, 0, 14, 14),
                     title: Text(

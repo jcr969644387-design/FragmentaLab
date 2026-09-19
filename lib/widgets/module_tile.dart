@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/ui_feedback.dart';
+
 /// Boton de acceso a un modulo desde la pantalla de inicio.
 class ModuleTile extends StatelessWidget {
   const ModuleTile({
@@ -29,7 +31,10 @@ class ModuleTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(14),
         child: InkWell(
           borderRadius: BorderRadius.circular(14),
-          onTap: onTap,
+          onTap: () {
+            UiFeedback.toque();
+            onTap();
+          },
           child: Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(

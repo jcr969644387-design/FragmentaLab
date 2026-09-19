@@ -4,6 +4,38 @@ Todos los cambios relevantes de Fragmenta Lab se documentan en este archivo.
 El formato sigue la idea general de [Keep a Changelog](https://keepachangelog.com/es-ES/1.1.0/)
 y el proyecto usa versionado semantico.
 
+## [1.1.0] - 2026-09-19
+
+### Cambiado
+
+- **Numeracion de modulos desde 1.** La pantalla de inicio deja de ocupar el
+  numero 1 y pasa a ser el punto de partida sin numerar; los ocho modulos se
+  numeran del 1 (diseno de malla) al 8 (tutor local). Antes la lista empezaba
+  en "2. Diseno de malla" y parecia faltar un modulo. La navegacion no cambia:
+  la barra inferior sigue con Inicio, Malla, Simulacion, Evaluacion y Tutor, y
+  los ocho accesos siguen presentes.
+- La etiqueta del desplegable de geometria en la simulacion pasa de "Tipo de
+  malla" a "Geometria de la malla", para no confundir la forma de la celda con
+  el contexto minero.
+
+### Agregado
+
+- **Retroalimentacion tactil y sonora** (`utils/ui_feedback.dart`) en las
+  interacciones principales: abrir un modulo, cambiar de pestana, elegir una
+  opcion o un desplegable, soltar un deslizador, calcular, enviar valores al
+  ejercicio, confirmar una respuesta e iniciar la simulacion. El acierto y el
+  error de la evaluacion se distinguen por el patron tactil ademas del color.
+  Se resuelve con `HapticFeedback` y `SystemSound` de Flutter, sin paquetes
+  externos, sin archivos de audio y sin permisos nuevos; puede apagarse con
+  `UiFeedback.habilitada`.
+- **Tipo de malla en la simulacion**: la pantalla declara si el ejercicio
+  corresponde a una malla subterranea, superficial o a ambas, con los cuatro
+  rasgos que sustentan la clasificacion (diametro, altura o avance,
+  subperforacion y longitud de perforacion) y su rango academico de
+  referencia. Nuevo modelo `mesh_type.dart`, nueva calculadora
+  `mesh_type_classifier.dart` y sus pruebas; criterios documentados en
+  `docs/formulas.md`.
+
 ## [1.0.0] - 2026-09-12
 
 ### Agregado

@@ -23,7 +23,7 @@ La aplicacion **no incluye y no incluira**:
 - recomendaciones operativas definitivas.
 
 Esta exclusion es una **decision de diseno del producto**, no una limitacion
-tecnica pendiente de resolver. Las categorias de explosivos del modulo 5 son
+tecnica pendiente de resolver. Las categorias de explosivos del modulo 4 son
 abstractas (baja, media y alta energia; resistencia al agua baja o buena) y sus
 indices son adimensionales: no representan ninguna propiedad medible de un
 producto real ni permiten inferirla.

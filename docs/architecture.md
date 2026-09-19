@@ -48,10 +48,10 @@ aplicacion.
 | `lib/models` | Datos inmutables y enumeraciones del dominio | Logica de calculo, widgets |
 | `lib/calculators` | Formulas y reglas puras | Estado, acceso a archivos, widgets |
 | `lib/services` | Estado compartido, configuracion, contenido | Formulas geometricas |
-| `lib/screens` | Los 9 modulos y la navegacion | Formulas |
+| `lib/screens` | La pantalla de inicio, los 8 modulos y la navegacion | Formulas |
 | `lib/widgets` | Componentes reutilizables sin logica de dominio | Reglas educativas |
 | `lib/theme` | Colores y `ThemeData` Material 3 | Textos |
-| `lib/utils` | Textos, formato y validaciones de entrada | Widgets |
+| `lib/utils` | Textos, formato, validaciones de entrada y retroalimentacion de interfaz | Widgets |
 
 ## 4. Modelos (`lib/models`)
 
@@ -70,6 +70,7 @@ aplicacion.
 | `fragmentation_outlook.dart` | Lectura conceptual de fragmentacion y eficiencia |
 | `quiz.dart` | `QuizTopic`, `QuizQuestion`, `QuizAnswer`, `QuizResult` |
 | `tutor_topic.dart` | `TutorTopic`, `TutorAnswer` |
+| `mesh_type.dart` | `MeshEnvironment` (subterranea, superficial, ambas), `MeshTypeCriterion`, `MeshTypeAssessment` |
 
 Los modelos son inmutables (`final` + `const` donde es posible) y exponen
 `copyWith`, lo que hace que el estado sea facil de razonar y de probar.
@@ -83,6 +84,7 @@ Los modelos son inmutables (`final` + `const` donde es posible) y exponen
 | `risk_classifier.dart` | Siete criterios → `RiskAssessment` con puntaje 0–100 |
 | `fragmentation_evaluator.dart` | Reglas cualitativas → `FragmentationOutlook` (indice 5–95) |
 | `delay_sequencer.dart` | Orden conceptual de salida por patron y efectos asociados |
+| `mesh_type_classifier.dart` | Cuatro rasgos geometricos → `MeshTypeAssessment`: malla subterranea, superficial o ambas |
 
 Todas son clases `const`-construibles y sin estado: la misma entrada produce
 siempre la misma salida, condicion necesaria para que las pruebas sean estables.
@@ -120,6 +122,14 @@ completa y compacta), `RiskChip`, `MetricBar` y `ResultRow` (indicadores),
 limitaciones), `NumericField` y `EnumDropdown` (entrada validada),
 `MeshPainter` / `MeshPreview` (`CustomPainter` de la malla) y `ModuleTile`.
 
+La retroalimentacion tactil y sonora vive en `utils/ui_feedback.dart`
+(`UiFeedback`), no en cada pantalla: los widgets compartidos (`ModuleTile`,
+`EnumDropdown`, los deslizadores) ya la emiten, de modo que una pantalla nueva
+la hereda sin escribir codigo. Usa solo `HapticFeedback` y `SystemSound` de
+Flutter —sin paquetes, sin archivos de audio y sin permisos— y puede apagarse
+por completo con `UiFeedback.habilitada`, que es lo que hacen las pruebas de
+widget.
+
 Varias decisiones buscan que el proyecto compile igual en distintas versiones
 de Flutter, evitando APIs que cambiaron de forma con el tiempo:
 
@@ -146,6 +156,7 @@ de Flutter, evitando APIs que cambiaron de forma con el tiempo:
 | `explosive_concept_test.dart` | Seleccion conceptual de categoria energetica |
 | `quiz_service_test.dart` | Banco de preguntas y calificacion |
 | `tutor_service_test.dart` | Reglas del tutor local y motor remoto reservado |
+| `mesh_type_classifier_test.dart` | Reconocimiento de malla subterranea, superficial y ambas |
 | `home_screen_widget_test.dart` | Prueba de widget de la pantalla principal |
 
 Ejecucion: `flutter test`.

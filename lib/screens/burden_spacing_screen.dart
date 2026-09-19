@@ -8,6 +8,7 @@ import '../services/config_service.dart';
 import '../services/design_store.dart';
 import '../utils/app_strings.dart';
 import '../utils/formatters.dart';
+import '../utils/ui_feedback.dart';
 import '../utils/validators.dart';
 import '../widgets/app_card.dart';
 import '../widgets/formula_card.dart';
@@ -16,7 +17,7 @@ import '../widgets/risk_indicator.dart';
 import '../widgets/safety_banner.dart';
 import 'screen_scaffold.dart';
 
-/// Modulo 3: calculadora educativa de burden y espaciamiento.
+/// Modulo 2: calculadora educativa de burden y espaciamiento.
 ///
 /// El modelo es configurable a proposito: el estudiante puede mover los
 /// coeficientes y comprobar que no existe una unica formula valida para todos
@@ -133,6 +134,7 @@ class _BurdenSpacingScreenState extends State<BurdenSpacingScreen> {
                 divisions: 50,
                 label: kB.toStringAsFixed(2),
                 onChanged: (double v) => setState(() => _kB = v),
+                onChangeEnd: (_) => UiFeedback.ajuste(),
               ),
               Text(
                 'k_S = ${kS.toStringAsFixed(2)} (relacion S/B)',
@@ -152,15 +154,19 @@ class _BurdenSpacingScreenState extends State<BurdenSpacingScreen> {
                 divisions: 50,
                 label: kS.toStringAsFixed(2),
                 onChanged: (double v) => setState(() => _kS = v),
+                onChangeEnd: (_) => UiFeedback.ajuste(),
               ),
               Row(
                 children: <Widget>[
                   Expanded(
                     child: OutlinedButton.icon(
-                      onPressed: () => setState(() {
-                        _kB = config.factorBurdenDiametro;
-                        _kS = config.factorEspaciamientoBurden;
-                      }),
+                      onPressed: () {
+                        UiFeedback.toque();
+                        setState(() {
+                          _kB = config.factorBurdenDiametro;
+                          _kS = config.factorEspaciamientoBurden;
+                        });
+                      },
                       icon: const Icon(Icons.settings_backup_restore),
                       label: const Text('Valores del archivo'),
                     ),
@@ -196,6 +202,7 @@ class _BurdenSpacingScreenState extends State<BurdenSpacingScreen> {
                 onPressed: burden <= 0
                     ? null
                     : () {
+                        UiFeedback.confirmacion();
                         store.actualizar(
                           store.design.copyWith(
                             diametroMm: diametro,

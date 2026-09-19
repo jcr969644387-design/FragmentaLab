@@ -4,6 +4,7 @@ import '../services/config_service.dart';
 import '../services/design_store.dart';
 import '../theme/app_theme.dart';
 import '../utils/app_strings.dart';
+import '../utils/ui_feedback.dart';
 import '../widgets/app_card.dart';
 import '../widgets/module_tile.dart';
 import '../widgets/safety_banner.dart';
@@ -16,11 +17,15 @@ import 'parameters_screen.dart';
 import 'simulation_screen.dart';
 import 'tutor_screen.dart';
 
-/// Modulo 1: pantalla de inicio.
+/// Pantalla de inicio.
 ///
 /// Cumple tres funciones: identificar la aplicacion, dejar la advertencia de
 /// uso educativo antes de cualquier calculo y ofrecer acceso directo a los
-/// nueve modulos del MVP.
+/// ocho modulos del MVP.
+///
+/// La pantalla de inicio es el punto de partida y no ocupa numero: los
+/// modulos se numeran del 1 al 8 empezando por el diseno de malla, que es el
+/// primer paso real del ejercicio.
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key, this.onIrATab});
 
@@ -105,7 +110,7 @@ class HomeScreen extends StatelessWidget {
           subtitulo: 'Todos los modulos trabajan sobre el mismo ejercicio.',
         ),
         ModuleTile(
-          numero: 2,
+          numero: 1,
           titulo: 'Diseno de malla',
           descripcion:
               'Ingresa los parametros geometricos y obten S/B, area por '
@@ -114,7 +119,7 @@ class HomeScreen extends StatelessWidget {
           onTap: () => _abrirTab(context, 1, const MeshDesignScreen()),
         ),
         ModuleTile(
-          numero: 3,
+          numero: 2,
           titulo: 'Burden y espaciamiento',
           descripcion: 'Calculadora educativa con coeficientes configurables y '
               'explicacion completa de cada formula.',
@@ -122,7 +127,7 @@ class HomeScreen extends StatelessWidget {
           onTap: () => _abrir(context, const BurdenSpacingScreen()),
         ),
         ModuleTile(
-          numero: 4,
+          numero: 3,
           titulo: 'Parametros tecnicos',
           descripcion:
               'Glosario de los trece parametros del curso, con unidades y '
@@ -131,7 +136,7 @@ class HomeScreen extends StatelessWidget {
           onTap: () => _abrir(context, const ParametersScreen()),
         ),
         ModuleTile(
-          numero: 5,
+          numero: 4,
           titulo: 'Explosivos (conceptual)',
           descripcion:
               'Categorias abstractas de energia y resistencia al agua, con '
@@ -140,7 +145,7 @@ class HomeScreen extends StatelessWidget {
           onTap: () => _abrir(context, const ExplosivesScreen()),
         ),
         ModuleTile(
-          numero: 6,
+          numero: 5,
           titulo: 'Secuencia de retardos',
           descripcion:
               'Orden conceptual de salida, intervalos relativos y direccion '
@@ -149,7 +154,7 @@ class HomeScreen extends StatelessWidget {
           onTap: () => _abrir(context, const DelaySequenceScreen()),
         ),
         ModuleTile(
-          numero: 7,
+          numero: 6,
           titulo: 'Simulacion conceptual',
           descripcion:
               'Vista en planta de la malla con indicadores de uniformidad, '
@@ -158,7 +163,7 @@ class HomeScreen extends StatelessWidget {
           onTap: () => _abrirTab(context, 2, const SimulationScreen()),
         ),
         ModuleTile(
-          numero: 8,
+          numero: 7,
           titulo: 'Evaluacion',
           descripcion: 'Quince preguntas con puntaje, respuestas correctas y '
               'explicacion tecnica de cada error.',
@@ -166,7 +171,7 @@ class HomeScreen extends StatelessWidget {
           onTap: () => _abrirTab(context, 3, const EvaluationScreen()),
         ),
         ModuleTile(
-          numero: 9,
+          numero: 8,
           titulo: 'Tutor local',
           descripcion:
               'Explicaciones basadas en reglas y diagnostico del ejercicio '
@@ -209,7 +214,10 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               OutlinedButton.icon(
-                onPressed: store.reiniciar,
+                onPressed: () {
+                  UiFeedback.toque();
+                  store.reiniciar();
+                },
                 icon: const Icon(Icons.restart_alt),
                 label: const Text('Reiniciar ejercicio de ejemplo'),
               ),

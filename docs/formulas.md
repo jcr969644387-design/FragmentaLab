@@ -188,7 +188,41 @@ conceptual del orden** entre cuatro patrones tipicos.
 
 ---
 
-## 8. Validaciones
+## 8. Reconocimiento del tipo de malla
+
+El modulo de simulacion declara si la malla del ejercicio corresponde a una
+labor **subterranea**, a un banco **superficial** o a **ambas**. No es una
+formula: son cuatro rasgos geometricos comparados con rangos academicos de
+referencia.
+
+| Rasgo | Compatible con subterranea | Compatible con superficial |
+|-------|---------------------------|----------------------------|
+| Diametro de perforacion | `D <= 89 mm` | `D >= 76 mm` |
+| Altura de banco o avance | `H <= 5 m` | `H >= 4 m` |
+| Subperforacion | `J = 0` | `J > 0` |
+| Longitud de perforacion | `L <= 5 m` | `L >= 4.5 m` |
+
+Decision, con `n_sub` y `n_sup` el numero de rasgos compatibles con cada metodo
+sobre un total de cuatro:
+
+- `n_sub >= 3` y `n_sup >= 3` → **ambas**.
+- `n_sup > n_sub` → **superficial**.
+- `n_sub > n_sup` → **subterranea**.
+- empate sin llegar a tres → **ambas**.
+
+Los rangos se solapan a proposito (76–89 mm, 4–5 m): esa franja es la que
+produce el resultado **ambas** y corresponde a bancos pequenos o a labores
+subterraneas de seccion amplia. La pantalla muestra siempre los cuatro rasgos
+con su valor y su rango, de modo que la clasificacion sea discutible en clase y
+no un veredicto opaco.
+
+La lectura es conceptual: reconoce el contexto en el que la malla tiene
+sentido, **no** identifica un metodo de explotacion real ni reemplaza el
+criterio de un ingeniero.
+
+---
+
+## 9. Validaciones
 
 Errores (bloquean la lectura del resultado): valores negativos; diametro,
 burden, espaciamiento o altura iguales a cero; numero de taladros no entero o
@@ -204,7 +238,7 @@ situaciones similares que conviene comentar en clase.
 
 ---
 
-## 9. Que NO calcula esta aplicacion
+## 10. Que NO calcula esta aplicacion
 
 - Masa de explosivo, densidad lineal de carga o factor de carga.
 - Tiempos de retardo, ventanas de disparo o cargas operantes por intervalo.

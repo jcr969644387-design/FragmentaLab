@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../theme/app_theme.dart';
+import '../utils/ui_feedback.dart';
 
 /// Campo numerico con validacion, unidad y texto de ayuda.
 class NumericField extends StatelessWidget {
@@ -104,9 +105,15 @@ class EnumDropdown<T> extends StatelessWidget {
                 )
                 .toList(),
             onChanged: (T? nuevo) {
-              if (nuevo != null) {
-                onChanged(nuevo);
+              if (nuevo == null) {
+                return;
               }
+              // La retroalimentacion solo acompana a un cambio real: volver a
+              // elegir la opcion vigente no vibra ni suena.
+              if (nuevo != valor) {
+                UiFeedback.seleccion();
+              }
+              onChanged(nuevo);
             },
           ),
         ),

@@ -13,7 +13,7 @@ import '../widgets/risk_indicator.dart';
 import '../widgets/safety_banner.dart';
 import 'screen_scaffold.dart';
 
-/// Modulo 5: modulo conceptual de explosivos.
+/// Modulo 4: modulo conceptual de explosivos.
 ///
 /// LIMITE EXPLICITO DEL PRODUCTO: este modulo trabaja unicamente con
 /// categorias abstractas. No contiene marcas, composiciones, cantidades,

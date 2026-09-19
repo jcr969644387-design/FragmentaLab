@@ -3,10 +3,16 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fragmenta_lab/app.dart';
 import 'package:fragmenta_lab/screens/home_screen.dart';
 import 'package:fragmenta_lab/utils/app_strings.dart';
+import 'package:fragmenta_lab/utils/ui_feedback.dart';
 import 'package:fragmenta_lab/widgets/module_tile.dart';
 import 'package:fragmenta_lab/widgets/safety_banner.dart';
 
 void main() {
+  // La retroalimentacion tactil y sonora se apaga en las pruebas: depende de
+  // canales de plataforma que no existen en el entorno de test.
+  setUp(() => UiFeedback.habilitada = false);
+  tearDown(() => UiFeedback.habilitada = true);
+
   /// Desplaza la lista de inicio hasta que el texto indicado sea visible.
   Future<void> desplazarHasta(WidgetTester tester, String texto) async {
     await tester.scrollUntilVisible(
@@ -71,19 +77,19 @@ void main() {
 
       // El primer acceso a modulo queda fuera de la ventana inicial de la
       // lista: se desplaza antes de comprobar que existen las tarjetas.
-      await desplazarHasta(tester, '2. Diseno de malla');
+      await desplazarHasta(tester, '1. Diseno de malla');
       expect(find.byType(ModuleTile), findsWidgets);
 
       // Recorre la lista comprobando los ocho accesos a modulos.
       for (final String titulo in <String>[
-        '2. Diseno de malla',
-        '3. Burden y espaciamiento',
-        '4. Parametros tecnicos',
-        '5. Explosivos (conceptual)',
-        '6. Secuencia de retardos',
-        '7. Simulacion conceptual',
-        '8. Evaluacion',
-        '9. Tutor local',
+        '1. Diseno de malla',
+        '2. Burden y espaciamiento',
+        '3. Parametros tecnicos',
+        '4. Explosivos (conceptual)',
+        '5. Secuencia de retardos',
+        '6. Simulacion conceptual',
+        '7. Evaluacion',
+        '8. Tutor local',
       ]) {
         await desplazarHasta(tester, titulo);
         expect(find.text(titulo), findsOneWidget);

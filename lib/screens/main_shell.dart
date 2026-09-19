@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../utils/ui_feedback.dart';
 import 'evaluation_screen.dart';
 import 'home_screen.dart';
 import 'mesh_design_screen.dart';
@@ -29,7 +30,19 @@ class _MainShellState extends State<MainShell> {
     'Tutor local',
   ];
 
+  /// Indice de la pestana de simulacion dentro de la barra inferior.
+  static const int _pestanaSimulacion = 2;
+
   void _irA(int indice) {
+    if (indice != _indice) {
+      // Entrar a la simulacion se siente distinto de cambiar de pestana: es
+      // el momento en que el ejercicio se pone en marcha.
+      if (indice == _pestanaSimulacion) {
+        UiFeedback.simulacion();
+      } else {
+        UiFeedback.seleccion();
+      }
+    }
     setState(() => _indice = indice);
   }
 

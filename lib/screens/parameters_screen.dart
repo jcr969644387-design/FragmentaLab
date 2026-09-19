@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/education_config.dart';
 import '../services/config_service.dart';
 import '../utils/app_strings.dart';
+import '../utils/ui_feedback.dart';
 import '../widgets/app_card.dart';
 import '../widgets/safety_banner.dart';
 import 'screen_scaffold.dart';
@@ -28,7 +29,7 @@ class _Parametro {
   final String error;
 }
 
-/// Modulo 4: parametros tecnicos.
+/// Modulo 3: parametros tecnicos.
 ///
 /// Glosario de los trece parametros que el MVP maneja, con unidades, rangos de
 /// entrada razonables para fines academicos y el error conceptual mas frecuente
@@ -305,6 +306,7 @@ class _TarjetaParametro extends StatelessWidget {
       child: Theme(
         data: tema.copyWith(dividerColor: Colors.transparent),
         child: ExpansionTile(
+          onExpansionChanged: (_) => UiFeedback.seleccion(),
           tilePadding: const EdgeInsets.symmetric(horizontal: 14),
           childrenPadding: const EdgeInsets.fromLTRB(14, 0, 14, 14),
           leading: Container(
