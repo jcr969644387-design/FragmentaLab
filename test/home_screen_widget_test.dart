@@ -41,8 +41,14 @@ void main() {
       await tester.pumpWidget(const FragmentaLabApp());
       await tester.pumpAndSettle();
 
+      // La lista de inicio construye sus hijos a medida que se desplaza, asi
+      // que primero se trae la advertencia a la vista.
+      await desplazarHasta(tester, AppStrings.advertenciaSeguridad);
+
       expect(find.byType(SafetyBanner), findsWidgets);
       expect(find.text(AppStrings.advertenciaSeguridad), findsOneWidget);
+
+      await desplazarHasta(tester, AppStrings.indicadorResultados);
       expect(
         find.text(AppStrings.indicadorResultados),
         findsAtLeastNWidgets(1),
@@ -63,6 +69,9 @@ void main() {
       await tester.pumpWidget(const FragmentaLabApp());
       await tester.pumpAndSettle();
 
+      // El primer acceso a modulo queda fuera de la ventana inicial de la
+      // lista: se desplaza antes de comprobar que existen las tarjetas.
+      await desplazarHasta(tester, '2. Diseno de malla');
       expect(find.byType(ModuleTile), findsWidgets);
 
       // Recorre la lista comprobando los ocho accesos a modulos.

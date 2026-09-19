@@ -22,16 +22,24 @@ class AppCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorScheme esquema = Theme.of(context).colorScheme;
+    // El fondo y el borde se pintan con `Material` y no con la decoracion de
+    // un `Container`: asi los hijos que dependen de un `Material` cercano
+    // (`ListTile`, `ExpansionTile`, `InkWell`) dibujan su fondo y su tinta
+    // sobre la tarjeta en lugar de quedar ocultos detras de ella.
     return Container(
       width: double.infinity,
       margin: const EdgeInsets.symmetric(vertical: 6),
-      padding: padding,
-      decoration: BoxDecoration(
+      child: Material(
         color: color ?? esquema.surface,
-        borderRadius: BorderRadius.circular(14),
-        border: Border.all(color: borderColor ?? esquema.outlineVariant),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(14),
+          side: BorderSide(color: borderColor ?? esquema.outlineVariant),
+        ),
+        child: Padding(
+          padding: padding,
+          child: child,
+        ),
       ),
-      child: child,
     );
   }
 }
