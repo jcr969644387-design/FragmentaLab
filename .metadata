@@ -1,0 +1,8 @@
+# Este archivo es usado por las herramientas de Flutter para registrar
+# propiedades del proyecto. NO editar manualmente.
+
+version:
+  revision: "stable"
+  channel: "stable"
+
+project_type: app

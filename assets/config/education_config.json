@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "descripcion": "Coeficientes y rangos EDUCATIVOS configurables de Fragmenta Lab. No son valores de diseno operativo: sirven unicamente para practicar relaciones geometricas en clase.",
+  "factorBurdenDiametro": 30.0,
+  "factorEspaciamientoBurden": 1.15,
+  "rangoBurdenDiametro": { "min": 20.0, "max": 45.0 },
+  "rangoSobreBurden": { "min": 0.8, "max": 1.8 },
+  "rangoOptimoSobreBurden": { "min": 1.0, "max": 1.4 },
+  "rangoTacoBurden": { "min": 0.6, "max": 1.4 },
+  "rangoSubperforacionDiametro": { "min": 6.0, "max": 14.0 },
+  "rangoEsbeltez": { "min": 1.5, "max": 8.0 },
+  "rangoDiametroMm": { "min": 25.0, "max": 400.0 },
+  "rangoAlturaBancoM": { "min": 1.0, "max": 30.0 },
+  "rangoInclinacionGrados": { "min": 0.0, "max": 30.0 },
+  "toleranciaLongitudPerforacion": 0.2
+}

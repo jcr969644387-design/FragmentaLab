@@ -1,0 +1,27 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  language:
+    strict-casts: true
+    strict-raw-types: true
+  errors:
+    # Estas reglas se mantienen como sugerencia de estilo y no bloquean el CI.
+    prefer_const_constructors: ignore
+    prefer_const_constructors_in_immutables: ignore
+    prefer_const_literals_to_create_immutables: ignore
+    prefer_const_declarations: ignore
+    use_super_parameters: ignore
+    avoid_redundant_argument_values: ignore
+    sort_child_properties_last: ignore
+    unnecessary_to_list_in_spreads: ignore
+    use_build_context_synchronously: ignore
+    deprecated_member_use: ignore
+  exclude:
+    - build/**
+    - "**/*.g.dart"
+
+linter:
+  rules:
+    always_declare_return_types: true
+    avoid_print: true
+    prefer_final_locals: true
