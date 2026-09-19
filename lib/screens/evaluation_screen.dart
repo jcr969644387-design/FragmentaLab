@@ -81,7 +81,8 @@ class _EvaluationScreenState extends State<EvaluationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final Widget cuerpo = _finalizada ? _construirResultado() : _construirPregunta();
+    final Widget cuerpo =
+        _finalizada ? _construirResultado() : _construirPregunta();
     return envolverModulo(
       context: context,
       titulo: 'Evaluacion',

@@ -155,8 +155,7 @@ class BurdenCalculator {
   }
 
   String _interpretarFactorBurden(double k, double burden) {
-    final String base =
-        'Con k_B = ${k.toStringAsFixed(2)} el burden resulta '
+    final String base = 'Con k_B = ${k.toStringAsFixed(2)} el burden resulta '
         '${burden.toStringAsFixed(2)} m. ';
     if (!config.rangoBurdenDiametro.contiene(k)) {
       return '$base El coeficiente esta fuera del rango educativo '

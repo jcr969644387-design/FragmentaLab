@@ -13,8 +13,7 @@ void main() {
     });
 
     test('todas las preguntas tienen identificador unico', () {
-      final Set<String> ids =
-          preguntas.map((QuizQuestion p) => p.id).toSet();
+      final Set<String> ids = preguntas.map((QuizQuestion p) => p.id).toSet();
       expect(ids.length, preguntas.length);
     });
 

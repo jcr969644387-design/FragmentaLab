@@ -66,7 +66,8 @@ class _MeshDesignScreenState extends State<MeshDesignScreen> {
     _longitud = TextEditingController(text: Fmt.num2(d.longitudPerforacionM));
     _subperforacion = TextEditingController(text: Fmt.num2(d.subperforacionM));
     _taco = TextEditingController(text: Fmt.num2(d.tacoM));
-    _inclinacion = TextEditingController(text: Fmt.num2(d.inclinacionGrados, 0));
+    _inclinacion =
+        TextEditingController(text: Fmt.num2(d.inclinacionGrados, 0));
     _filas = TextEditingController(text: '${d.filas}');
     _taladros = TextEditingController(text: '${d.taladrosPorFila}');
   }
@@ -113,8 +114,8 @@ class _MeshDesignScreenState extends State<MeshDesignScreen> {
   void _sugerirGeometria() {
     final EducationConfig config = ConfigService.instance.config;
     final BurdenCalculator calc = BurdenCalculator(config);
-    final double diametro =
-        Fmt.parseDouble(_diametro.text) ?? DesignScope.of(context).design.diametroMm;
+    final double diametro = Fmt.parseDouble(_diametro.text) ??
+        DesignScope.of(context).design.diametroMm;
     final double burden = calc.burdenDesdeDiametro(diametro);
     final double espaciamiento = calc.espaciamientoDesdeBurden(burden);
     _burden.text = Fmt.num2(burden);
@@ -139,8 +140,7 @@ class _MeshDesignScreenState extends State<MeshDesignScreen> {
     final EducationConfig config = ConfigService.instance.config;
     final GeometryResult g = _geometria.calcular(d);
     final RiskAssessment riesgo = RiskClassifier(config).clasificar(d, g);
-    final ValidationResult validacion =
-        Validators(config).validarDiseno(d, g);
+    final ValidationResult validacion = Validators(config).validarDiseno(d, g);
     final Validators validadores = Validators(config);
 
     final Widget cuerpo = ListView(
@@ -161,8 +161,8 @@ class _MeshDesignScreenState extends State<MeshDesignScreen> {
                 unidad: 'mm',
                 icono: Icons.circle_outlined,
                 ayuda: 'Rango educativo ${config.rangoDiametroMm} mm.',
-                validator: (String? v) =>
-                    validadores.enRango(v, 'El diametro', config.rangoDiametroMm, 'mm'),
+                validator: (String? v) => validadores.enRango(
+                    v, 'El diametro', config.rangoDiametroMm, 'mm'),
                 onChanged: (_) => _publicar(),
               ),
               NumericField(
@@ -232,7 +232,8 @@ class _MeshDesignScreenState extends State<MeshDesignScreen> {
                 etiqueta: 'Inclinacion respecto a la vertical',
                 unidad: 'grados',
                 icono: Icons.rotate_right,
-                ayuda: 'Rango educativo ${config.rangoInclinacionGrados} grados.',
+                ayuda:
+                    'Rango educativo ${config.rangoInclinacionGrados} grados.',
                 validator: (String? v) =>
                     Validators.noNegativo(v, 'la inclinacion'),
                 onChanged: (_) => _publicar(),
@@ -498,7 +499,8 @@ class _TarjetaValidacion extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Icon(_icono(e.severidad), size: 20, color: _color(e.severidad)),
+                    Icon(_icono(e.severidad),
+                        size: 20, color: _color(e.severidad)),
                     const SizedBox(width: 10),
                     Expanded(
                       child: Column(

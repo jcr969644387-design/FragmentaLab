@@ -39,14 +39,20 @@ jobs:
       - name: Build universal APK
         run: flutter build apk --release
 
-      - name: Verify APK
+      - name: Verify single APK
         run: |
           test -f build/app/outputs/flutter-apk/app-release.apk
+          total=$(find build/app/outputs -name "*.apk" | wc -l)
+          if [ "$total" -ne 1 ]; then
+            echo "Se esperaba exactamente 1 APK y se encontraron $total:"
+            find build/app/outputs -name "*.apk"
+            exit 1
+          fi
           ls -lh build/app/outputs/flutter-apk/app-release.apk
 
       - name: Upload universal APK
         uses: actions/upload-artifact@v4
         with:
-          name: blast-design-lab-apk
+          name: fragmenta-lab-apk
           path: build/app/outputs/flutter-apk/app-release.apk
           if-no-files-found: error

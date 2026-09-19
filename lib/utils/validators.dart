@@ -212,7 +212,8 @@ class Validators {
             '(${config.rangoInclinacionGrados} grados).',
       );
     }
-    if (d.burdenM > 0 && !config.rangoSobreBurden.contiene(g.relacionSobreBurden)) {
+    if (d.burdenM > 0 &&
+        !config.rangoSobreBurden.contiene(g.relacionSobreBurden)) {
       advertir(
         'Relacion S/B',
         'La relacion S/B (${Fmt.num2(g.relacionSobreBurden)}) esta fuera del '
@@ -227,7 +228,8 @@ class Validators {
             'fuera del rango educativo (${config.rangoBurdenDiametro}).',
       );
     }
-    if (d.burdenM > 0 && !config.rangoTacoBurden.contiene(g.relacionTacoBurden)) {
+    if (d.burdenM > 0 &&
+        !config.rangoTacoBurden.contiene(g.relacionTacoBurden)) {
       advertir(
         'Relacion taco/burden',
         'La relacion taco/burden (${Fmt.num2(g.relacionTacoBurden)}) esta '

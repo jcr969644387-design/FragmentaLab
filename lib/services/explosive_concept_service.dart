@@ -27,7 +27,8 @@ class ExplosiveConceptService {
       desplazamientoEsperado: _desplazamiento(energia),
       sensibilidadAlAgua: _sensibilidad(resistenciaAgua, agua),
       adecuacionConceptual: _adecuacion(energia, dureza, resistenciaAgua, agua),
-      observacionEducativa: _observacion(energia, dureza, resistenciaAgua, agua),
+      observacionEducativa:
+          _observacion(energia, dureza, resistenciaAgua, agua),
     );
   }
 

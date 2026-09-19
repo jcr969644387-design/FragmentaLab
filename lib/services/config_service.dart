@@ -39,7 +39,8 @@ class ConfigService extends ChangeNotifier {
         _cargadoDesdeAsset = true;
         _ultimoError = null;
       } else {
-        _ultimoError = 'El archivo de configuracion no contiene un objeto JSON.';
+        _ultimoError =
+            'El archivo de configuracion no contiene un objeto JSON.';
       }
     } catch (error) {
       _cargadoDesdeAsset = false;

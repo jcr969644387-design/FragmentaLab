@@ -116,8 +116,7 @@ class HomeScreen extends StatelessWidget {
         ModuleTile(
           numero: 3,
           titulo: 'Burden y espaciamiento',
-          descripcion:
-              'Calculadora educativa con coeficientes configurables y '
+          descripcion: 'Calculadora educativa con coeficientes configurables y '
               'explicacion completa de cada formula.',
           icono: Icons.straighten_outlined,
           onTap: () => _abrir(context, const BurdenSpacingScreen()),
@@ -161,8 +160,7 @@ class HomeScreen extends StatelessWidget {
         ModuleTile(
           numero: 8,
           titulo: 'Evaluacion',
-          descripcion:
-              'Quince preguntas con puntaje, respuestas correctas y '
+          descripcion: 'Quince preguntas con puntaje, respuestas correctas y '
               'explicacion tecnica de cada error.',
           icono: Icons.fact_check_outlined,
           onTap: () => _abrirTab(context, 3, const EvaluationScreen()),

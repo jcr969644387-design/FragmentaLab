@@ -111,8 +111,7 @@ class ParametersScreen extends StatelessWidget {
             'Al aumentar el diametro con los mismos coeficientes, la malla se '
             'abre y se requieren menos taladros para el mismo volumen, pero la '
             'distribucion se concentra en menos puntos.',
-        error:
-            'Mezclar unidades: usar milimetros en una formula que espera '
+        error: 'Mezclar unidades: usar milimetros en una formula que espera '
             'metros multiplica el resultado por mil.',
       ),
       _Parametro(
@@ -142,8 +141,7 @@ class ParametersScreen extends StatelessWidget {
         influencia:
             'Muy corto, desperdicia perforacion; muy amplio, deja material '
             'grueso en la zona intermedia entre taladros.',
-        error:
-            'Analizarlo de forma aislada. Siempre se lee junto al burden a '
+        error: 'Analizarlo de forma aislada. Siempre se lee junto al burden a '
             'traves de la relacion S/B.',
       ),
       _Parametro(
@@ -165,8 +163,7 @@ class ParametersScreen extends StatelessWidget {
         nombre: 'Longitud de perforacion',
         simbolo: 'L',
         unidad: 'm',
-        rango:
-            'Coherente con H y J (tolerancia '
+        rango: 'Coherente con H y J (tolerancia '
             '${(config.toleranciaLongitudPerforacion * 100).toStringAsFixed(0)} %)',
         definicion:
             'Longitud total del taladro. Geometricamente equivale a la altura '
@@ -189,8 +186,7 @@ class ParametersScreen extends StatelessWidget {
         influencia:
             'Insuficiente, deja resaltes en el piso; excesiva, se asocia a '
             'dano bajo el nivel de piso y sobreexcavacion.',
-        error:
-            'Tratarla como longitud sobrante. Es una decision de diseno con '
+        error: 'Tratarla como longitud sobrante. Es una decision de diseno con '
             'consecuencias sobre el piso del banco.',
       ),
       _Parametro(
@@ -228,14 +224,12 @@ class ParametersScreen extends StatelessWidget {
         simbolo: 'e',
         unidad: 'm o grados (no se calcula en el MVP)',
         rango: 'Cualitativo',
-        definicion:
-            'Diferencia entre la trayectoria real del taladro y la '
+        definicion: 'Diferencia entre la trayectoria real del taladro y la '
             'proyectada, por efecto del equipo, el terreno o el operador.',
         influencia:
             'Su efecto crece con la longitud del taladro: el burden real en el '
             'fondo puede diferir mucho del burden de diseno.',
-        error:
-            'Suponer que el diseno calculado es el diseno ejecutado. La '
+        error: 'Suponer que el diseno calculado es el diseno ejecutado. La '
             'desviacion explica buena parte de las diferencias de resultado.',
       ),
       const _Parametro(
@@ -248,8 +242,7 @@ class ParametersScreen extends StatelessWidget {
             'geometrico a masa, calculo que el MVP deliberadamente no realiza.',
         influencia:
             'Condiciona el tonelaje asociado a un mismo volumen geometrico.',
-        error:
-            'Usar la densidad de una muestra como densidad del macizo, que '
+        error: 'Usar la densidad de una muestra como densidad del macizo, que '
             'incluye discontinuidades y vacios.',
       ),
       const _Parametro(
@@ -263,8 +256,7 @@ class ParametersScreen extends StatelessWidget {
         influencia:
             'Cuanto mayor es la dureza, mas exigente resulta el balance frente '
             'a la categoria energetica seleccionada.',
-        error:
-            'Considerar solo la resistencia de la matriz e ignorar las '
+        error: 'Considerar solo la resistencia de la matriz e ignorar las '
             'discontinuidades, que suelen gobernar el comportamiento real.',
       ),
       const _Parametro(
@@ -272,14 +264,12 @@ class ParametersScreen extends StatelessWidget {
         simbolo: '-',
         unidad: 'Cualitativo: seco, humedo, con agua',
         rango: 'Tres categorias',
-        definicion:
-            'Condicion de agua dentro del taladro, declarada de forma '
+        definicion: 'Condicion de agua dentro del taladro, declarada de forma '
             'cualitativa.',
         influencia:
             'Con agua declarada, el criterio conceptual de seleccion prioriza '
             'la resistencia al agua por encima de la energia relativa.',
-        error:
-            'Elegir primero por energia y despues revisar el agua: el orden '
+        error: 'Elegir primero por energia y despues revisar el agua: el orden '
             'correcto de los criterios es el inverso.',
       ),
       const _Parametro(
@@ -293,8 +283,7 @@ class ParametersScreen extends StatelessWidget {
         influencia:
             'Pueden dominar el resultado por encima de la geometria de la '
             'malla, guiando la rotura por planos preexistentes.',
-        error:
-            'Suponer un macizo homogeneo. El MVP asume homogeneidad por '
+        error: 'Suponer un macizo homogeneo. El MVP asume homogeneidad por '
             'simplificacion, y esa es una de sus principales limitaciones.',
       ),
     ];

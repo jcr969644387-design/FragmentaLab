@@ -107,8 +107,7 @@ class DelaySequenceScreen extends StatelessWidget {
               ),
               _Bloque(
                 titulo: 'Limite del modulo',
-                texto:
-                    'Fragmenta Lab no calcula tiempos de retardo, no define '
+                texto: 'Fragmenta Lab no calcula tiempos de retardo, no define '
                     'elementos de iniciacion y no describe conexiones. El '
                     'objetivo es unicamente comparar el efecto conceptual del '
                     'orden de salida entre cuatro patrones tipicos.',

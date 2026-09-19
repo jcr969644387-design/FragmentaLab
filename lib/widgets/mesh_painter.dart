@@ -34,9 +34,8 @@ class MeshPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final int filas = design.filas <= 0 ? 1 : design.filas;
-    final int columnas = design.taladrosPorFila <= 0
-        ? 1
-        : design.taladrosPorFila;
+    final int columnas =
+        design.taladrosPorFila <= 0 ? 1 : design.taladrosPorFila;
     final double burden = design.burdenM <= 0 ? 1 : design.burdenM;
     final double espaciamiento =
         design.espaciamientoM <= 0 ? 1 : design.espaciamientoM;

@@ -32,15 +32,12 @@ class RiskAssessment {
   /// evaluados quedaron dentro de rango.
   final int puntaje;
 
-  List<RiskFinding> get criticos => hallazgos
-      .where((RiskFinding h) => h.nivel == RiskLevel.alto)
-      .toList();
+  List<RiskFinding> get criticos =>
+      hallazgos.where((RiskFinding h) => h.nivel == RiskLevel.alto).toList();
 
-  List<RiskFinding> get atencion => hallazgos
-      .where((RiskFinding h) => h.nivel == RiskLevel.medio)
-      .toList();
+  List<RiskFinding> get atencion =>
+      hallazgos.where((RiskFinding h) => h.nivel == RiskLevel.medio).toList();
 
-  List<RiskFinding> get conformes => hallazgos
-      .where((RiskFinding h) => h.nivel == RiskLevel.bajo)
-      .toList();
+  List<RiskFinding> get conformes =>
+      hallazgos.where((RiskFinding h) => h.nivel == RiskLevel.bajo).toList();
 }

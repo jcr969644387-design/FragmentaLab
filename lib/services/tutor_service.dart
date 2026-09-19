@@ -98,8 +98,7 @@ class LocalRuleTutorEngine implements TutorEngine {
     TutorTopic(
       id: 'diametro',
       pregunta: 'Como afecta el diametro de perforacion?',
-      respuesta:
-          'El diametro es la variable de referencia de todo el diseno '
+      respuesta: 'El diametro es la variable de referencia de todo el diseno '
           'geometrico: burden, espaciamiento, taco y subperforacion suelen '
           'expresarse como multiplos suyos. Al aumentar el diametro '
           'manteniendo los mismos coeficientes, la malla se abre y disminuye '
@@ -136,8 +135,7 @@ class LocalRuleTutorEngine implements TutorEngine {
     TutorTopic(
       id: 'desviacion',
       pregunta: 'Como afecta la desviacion del taladro?',
-      respuesta:
-          'La desviacion es la diferencia entre la trayectoria real del '
+      respuesta: 'La desviacion es la diferencia entre la trayectoria real del '
           'taladro y la proyectada. Su efecto crece con la longitud: en '
           'taladros largos un pequeno error angular desplaza varios '
           'decimetros el fondo, de modo que el burden real en el fondo puede '

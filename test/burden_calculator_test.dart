@@ -73,8 +73,8 @@ void main() {
     test('la explicacion de la relacion reconoce el rango de referencia', () {
       final FormulaExplanation exp = calc.explicarRelacion(3.0, 2.6);
       expect(exp.unidadResultado, 'adimensional');
-      expect(exp.interpretacion.contains('rango educativo de referencia'),
-          isTrue);
+      expect(
+          exp.interpretacion.contains('rango educativo de referencia'), isTrue);
     });
   });
 }
